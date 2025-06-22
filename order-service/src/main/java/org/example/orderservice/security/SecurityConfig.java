@@ -1,4 +1,4 @@
-package org.example.inventoryservice.security;
+package org.example.orderservice.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,7 +27,7 @@ public class SecurityConfig {
                 .sessionManagement(sm-> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .csrf(csrf->csrf.disable())
                 .headers(h->h.frameOptions(fo->fo.disable()))
-                .authorizeHttpRequests((ar->ar.requestMatchers( "/h2-console/**", "api/products/**", "/swagger-ui.html", "/v3/**").permitAll()))
+                .authorizeHttpRequests((ar->ar.requestMatchers( "/h2-console/**", "api/orders/**").permitAll()))
                 //.authorizeHttpRequests(ar->ar.requestMatchers("/api/products/**").hasAuthority("ADMIN"))
                 .authorizeHttpRequests(ar->ar.anyRequest().authenticated())
                 .oauth2ResourceServer(o2->o2.jwt(jwt->jwt.jwtAuthenticationConverter(jwtAuthConverter)))
